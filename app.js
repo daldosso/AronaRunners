@@ -33,7 +33,8 @@ Ext.application({
     views: [
         'Main',
         'Athlete',
-        'Athletes'
+        'Athletes',
+        'FootRaces'
     ],
 
     icon: {

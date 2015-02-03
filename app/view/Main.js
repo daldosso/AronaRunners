@@ -22,6 +22,8 @@ Ext.define('AronaRunners.view.Main', {
                 html: "<div style='text-align: center'><img src='http://www.podisticaarona.it/templates/2014Podistica/images/logo_top.png' style='width: 230px' /></div>"
             }, {
                 xclass: 'AronaRunners.view.Athletes'
+            }, {
+                xclass: 'AronaRunners.view.FootRaces'
             }
         ]
     }
