@@ -1,3 +1,6 @@
 .sencha
 build
 touch
+.sass
+.sass-cache
+config.php
