@@ -15,7 +15,6 @@
 		$input = htmlspecialchars(stripslashes($input));
         $input = str_ireplace("script", "blocked", $input);
         $input = mysql_real_escape_string($input);
-
 		return $input;
 	}
 

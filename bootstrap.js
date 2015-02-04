@@ -37,11 +37,16 @@ Ext.Loader.addClassPathMappings({
 
 Ext.ClassManager.addNameAlternateMappings({
   "AronaRunners.controller.Athletes": [],
+  "AronaRunners.controller.FootRaces": [],
   "AronaRunners.model.Athletes": [],
+  "AronaRunners.model.FootRaces": [],
   "AronaRunners.store.Athlete": [],
   "AronaRunners.store.Athletes": [],
+  "AronaRunners.store.FootRaces": [],
   "AronaRunners.view.Athlete": [],
   "AronaRunners.view.Athletes": [],
+  "AronaRunners.view.FootRace": [],
+  "AronaRunners.view.FootRaces": [],
   "AronaRunners.view.Main": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -667,18 +672,29 @@ Ext.ClassManager.addNameAlternateMappings({
 
 Ext.ClassManager.addNameAliasMappings({
   "AronaRunners.controller.Athletes": [],
+  "AronaRunners.controller.FootRaces": [],
   "AronaRunners.model.Athletes": [],
+  "AronaRunners.model.FootRaces": [],
   "AronaRunners.store.Athlete": [
     "store.Athlete"
   ],
   "AronaRunners.store.Athletes": [
     "store.Athletes"
   ],
+  "AronaRunners.store.FootRaces": [
+    "store.FootRaces"
+  ],
   "AronaRunners.view.Athlete": [
     "widget.athlete"
   ],
   "AronaRunners.view.Athletes": [
     "widget.athletesList"
+  ],
+  "AronaRunners.view.FootRace": [
+    "widget.footRace"
+  ],
+  "AronaRunners.view.FootRaces": [
+    "widget.footRacesList"
   ],
   "AronaRunners.view.Main": [
     "widget.main"

@@ -14,14 +14,17 @@ Ext.define('AronaRunners.view.FootRaces', {
         },
         items: [{
                 xtype: 'list',
+                id: 'footRacesList',
                 title: 'Gare',
                 flex: 1,
-                store: 'Athletes',
-                grouped: true,
+                store: 'FootRaces',
                 itemTpl: [
                     '<table style=""><tr><td style="text-align: right; padding-right: 10px">',
-                    'Cognome: </td><td>{lastname}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
-                    'Nome: </td><td>{firstname}</td></tr></table>'
+                    'Dove: </td><td>{where}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
+                    'Quando: </td><td>{when}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
+                    'Km: </td><td>{length}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
+                    'Partecipanti: </td><td>{participants}</td>',
+                    '</tr></table>'
                 ]
             }
         ]

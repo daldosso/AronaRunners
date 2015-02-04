@@ -18,23 +18,27 @@ Ext.application({
     ],
 
     models: [
-        'Athletes'
+        'Athletes',
+        'FootRaces'
     ],
 
     stores: [
         'Athletes',
-        'Athlete'
+        'Athlete',
+        'FootRaces'
     ],
 
     controllers: [
-        'Athletes'
+        'Athletes',
+        'FootRaces'
     ],
 
     views: [
         'Main',
         'Athlete',
         'Athletes',
-        'FootRaces'
+        'FootRaces',
+        'FootRace'
     ],
 
     icon: {
