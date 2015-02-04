@@ -12,7 +12,9 @@ Ext.define('AronaRunners.controller.FootRaces', {
     config: {
         refs: {
             footRacesList: '#footRacesList',
-            confirm: 'button[action=confirm]'
+            confirm: 'button[action=confirm]',
+            decline: 'button[action=decline]',
+            maybe: 'button[action=maybe]'
         },
         control: {
             footRacesList: {
@@ -23,13 +25,23 @@ Ext.define('AronaRunners.controller.FootRaces', {
                     var form = this.getConfirm().up('formpanel');
                     form.submit({
                         success: function() {
-                            Ext.Msg.alert('Fatto', 'Registrato, grazie');
+                            Ext.Msg.alert('', 'Grande!!! ci vediamo alla gara');
                             Ext.data.StoreManager.lookup('FootRaces').load();
                         },
                         failure: function(f, r) {
                             Ext.Msg.alert('Errore', r.message);
                         }
                     });
+                }
+            },
+            decline: {
+                tap: function() {
+                    Ext.Msg.alert('', 'Ok, sarà per la prossima');    
+                }
+            },
+            maybe: {
+                tap: function() {
+                    Ext.Msg.alert('', 'Ok, magari ci vediamo');    
                 }
             }
         }

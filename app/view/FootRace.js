@@ -24,11 +24,13 @@ Ext.define('AronaRunners.view.FootRace', {
         }, {
             xtype: 'button',
             text: 'No',
-            ui: 'decline'
+            ui: 'decline',
+            action: 'decline'
         }, {
             xtype: 'button',
             text: 'Forse',
-            ui: 'action'
+            ui: 'action',
+            action: 'maybe'
         }]
     }
 });

@@ -22,8 +22,8 @@ Ext.define('AronaRunners.view.FootRaces', {
                     '<table style=""><tr><td style="text-align: right; padding-right: 10px">',
                     'Dove: </td><td>{where}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
                     'Quando: </td><td>{when}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
-                    'Km: </td><td>{length}</td></tr><tr><td style="text-align: right; padding-right: 10px">',
-                    'Partecipanti: </td><td>{participants}</td>',
+                    'Km: </td><td>{length} <tpl if="length2 !== 0">e {length2}</tpl> <tpl if="length3 !== 0">e {length3}</tpl></td></tr><tr><td style="text-align: right; padding-right: 10px">',
+                    'Podistici: </td><td>{participants}</td>',
                     '</tr></table>'
                 ]
             }
