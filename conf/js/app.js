@@ -152,21 +152,12 @@ app.controller('Lookups', function ($scope, $http, $dialog) {
   };
 });
 
-app.controller('AthletesCtrl', function($scope, $http) {
+app.controller('FootRacesCtrl', function($scope, $http) {
   
-  $http.get('api/gyms.php').success(function(data) {
-    $scope.gyms = data;
+  $http.get('http://www.podisticaarona.it/mobile/svr/footraces-list.php').success(function(data) {
+    $scope.races = data;
   });
-  
-  $http.get('api/grades.php').success(function(data) {
-    $scope.grades = data;
-  });
-  
-  $http.get('api/athletes.php').success(function(data) {
-    $scope.athletes = data;
-  });
-  
-  $scope.orderProp = 'gym';
+
 });
 
 

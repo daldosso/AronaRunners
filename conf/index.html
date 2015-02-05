@@ -14,7 +14,7 @@
 
     <br/><br/>
     
-    <div ng-controller="AthletesCtrl" ng-cloak class="container theme-showcase">
+    <div ng-controller="FootRacesCtrl" ng-cloak class="container theme-showcase">
       
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -23,44 +23,34 @@
         <div class="panel-body">
          
           <p>
-            Cerca: <input ng-model="query">&nbsp;
-                        
-            Ordina per:
-            <select ng-model="orderProp">
-              <option selected value=''></option>
-              <option value="gym_desc">Societ&agrave;</option>
-              <option value="lastname">Cognome</option>
-              <option value="gender">Sesso</option>
-              <option value="weight">Peso</option>
-              <option value="year">Anno</option>
-            </select>
+            Cerca: <input ng-model="search">&nbsp;
           </p>  
         
           <table class="table">
             <thead>
               <tr>
-                <th>Societ&agrave;</th>
-                <th>Cognome</th>
-                <th>Nome</th>
-                <th>Grado</th>
-                <th>Anno</th>
-                <th>Sesso</th>
-                <th>Peso</th>                
-                <th>SQ</th>
-                <th>Ranking</th>
+                <th>Data e ora</th>
+                <th>Luogo</th>
+                <th>Distanza 1</th>
+                <th>Distanza 2</th>
+                <th>Distanza 3</th>
+                <th>Partecipanti</th>
+                <th>Organizzatore</th>                
+                <th>Sito internet</th>
+                <th>Tipologia</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="athlete in filtered = (athletes | filter:query | filter:grade | filter:gym | filter:gender | orderBy:orderProp)" class="active">
-                <td>{{athlete.gym_desc}}</td>
-                <td>{{athlete.lastname}}</td>
-                <td>{{athlete.name}}</td>
-                <td>{{athlete.grade}}</td>
-                <td>{{athlete.year}}</td>
-                <td>{{athlete.gender}}</td>
-                <td class='text-right'>{{athlete.weight}}</td>
-                <td>{{athlete.sq}}</td>
-                <td>{{athlete.ranking}}</td>
+              <tr ng-repeat="race in races | filter:search" class="active">
+                <td>{{race.when}}</td>
+                <td>{{race.where}}</td>
+                <td>{{race.length}}</td>
+                <td>{{race.length2}}</td>
+                <td>{{race.length3}}</td>
+                <td>{{race.participants}}</td>
+                <td>{{race.organizer}}</td>
+                <td>{{race.web}}</td>
+                <td>{{race.type}}</td>
               </tr>
             </tbody>
           </table>

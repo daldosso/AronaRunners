@@ -28,7 +28,8 @@
           'length3' => $row['race_length3'],
           'participants' => $row['race_participants'],
           'organizer' => $row['race_organizer'],
-          'web' => $row['race_website']
+          'web' => $row['race_website'],
+          'type' => $row['race_type']
         );
     }
 
