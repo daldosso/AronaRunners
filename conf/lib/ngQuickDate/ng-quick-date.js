@@ -6,12 +6,12 @@
   app.provider("ngQuickDateDefaults", function() {
     return {
       options: {
-        dateFormat: 'M/d/yyyy',
+        dateFormat: 'd/M/yyyy',
         timeFormat: 'h:mm a',
         labelFormat: null,
-        placeholder: 'Click to Set Date',
+        //placeholder: 'Click to Set Date',
         hoverText: null,
-        buttonIconHtml: null,
+        buttonIconHtml: '<span class="glyphicon glyphicon-calendar" style="margin-right: 10px"></span>',
         closeButtonHtml: '&times;',
         nextLinkHtml: 'Next &rarr;',
         prevLinkHtml: '&larr; Prev',

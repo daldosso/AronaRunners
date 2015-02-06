@@ -2,27 +2,27 @@ var app = angular.module('app', ['ui.bootstrap', 'ngQuickDate']);
 
 var url = 'api/configurazioni.php';
 
-app.factory('configurationFactory', function ($http) { 
-    return { 
-        getConfiguration: function () { 
-            return $http.get(url); 
-        }, 
-        updateConfiguration: function (configuration) { 
-            return $http.post(url, configuration); 
-        } 
-    }; 
-}); 
+app.factory('configurationFactory', function ($http) {
+    return {
+        getConfiguration: function () {
+            return $http.get(url);
+        },
+        updateConfiguration: function (configuration) {
+            return $http.post(url, configuration);
+        }
+    };
+});
 
-app.factory('notificationFactory', function () { 
-    return { 
-        success: function () { 
+app.factory('notificationFactory', function () {
+    return {
+        success: function () {
             alert('Dato salvato');
-        }, 
-        error: function (text) { 
+        },
+        error: function (text) {
             alert('Errore!!!');
-        } 
-    }; 
-}); 
+        }
+    };
+});
 
 app.controller('ConfigurationCtrl', function ($scope, configurationFactory, notificationFactory) { 
     $scope.configuration = []; 
@@ -158,17 +158,28 @@ app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
     $scope.races = data;
   });
 
+    $scope.race = {
+        when: '',
+        where: '',
+        length: '',
+        length2: '',
+        length3: '',
+        organizer: '',
+        web: '',
+        type: ''
+    };
+
     $scope.open = function () {
 
        $modal.open({
             templateUrl: 'race.html',
             backdrop: true,
             windowClass: 'modal',
-            controller: function ($scope, $modalInstance, $log, user) {
-                $scope.user = user;
+            controller: function ($scope, $modalInstance, $log, race) {
+                $scope.race = race;
                 $scope.submit = function () {
                     $log.log('Submiting user info.');
-                    $log.log(user);
+                    $log.log(race);
                     $modalInstance.dismiss('cancel');
                 }
                 $scope.cancel = function () {
@@ -176,8 +187,8 @@ app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
                 };
             },
             resolve: {
-                user: function () {
-                    return $scope.user;
+                race: function () {
+                    return $scope.race;
                 }
             }
         });

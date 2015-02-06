@@ -4,43 +4,43 @@
     border: solid 1px red;
   }
 </style>
-
-<div ng-controller='DemoCtrl'>
-  <form name='date_form' novalidate>
-    <p>
-      <label>My Date</label>
-      <quick-datepicker name='myDate' ng-model='myDate' required></quick-datepicker>
-    </p>
-    <p>
-      <label>Some other field</label>
-      <input type='text' name='otherField' ng-model='otherField' required />
-    </p>
-  </form>
-  <br/>
-  <br/>
-  <a href='' ng-click='setToToday()'>Set Date to Today</a>
-</div>
-<script type='text/javascript'>
-  var app = angular.module("ngQuickDateDemo", ["ngQuickDate"]);
-  app.config(function(ngQuickDateDefaultsProvider) {
-    return ngQuickDateDefaultsProvider.set({
-    });
-  });
-  app.controller("DemoCtrl", function($scope) {
-    $scope.myDate = null
-    $scope.setToToday = function() { $scope.myDate = new Date(); }
-  });
-</script>
-
 <div class="modal-header">
-    <h3>Modal!</h3>
+    <h3>Gara!</h3>
 </div>
-<form ng-submit="submit()">
+<form ng-submit="submit()" role="form">
   <div class="modal-body">
-    <label>User name</label>
-    <input type="text" ng-model="user.user" />
-    <label>Password</label>
-    <input type="password" ng-model="user.password" />
+    <div class="form-group">
+      <label for="when">Data e ora</label><br/>
+      <quick-datepicker ng-model='race.when' id='when' required></quick-datepicker><br/>
+    </div>
+    <div class="form-group">
+      <label for="where">Dove</label>
+      <input type="text" id="where" class="form-control" ng-model="race.where" />
+    </div>
+    <div class="form-group col-lg-4">
+      <label for="whelengthre">Distanza 1, Km</label>
+      <input type="text" id="length" class="form-control" ng-model="race.length" />
+    </div>
+    <div class="form-group col-lg-4">
+      <label for="length2">Distanza 2, Km</label>
+      <input type="text" id="length2" class="form-control" ng-model="race.length2" />
+    </div>
+    <div class="form-group col-lg-4">
+      <label for="length3">Distanza 3, Km</label>
+      <input type="text" id="length3" class="form-control" ng-model="race.length3" />
+    </div>
+    <div class="form-group">
+      <label for="organizer">Organizzatore</label>
+      <input type="text" id="organizer" class="form-control" ng-model="race.organizer" />
+    </div>
+    <div class="form-group">
+      <label for="web">Sito web</label>
+      <input type="text" id="web" class="form-control" ng-model="race.web" />
+    </div>
+    <div class="form-group">
+      <label for="type">Tipologia</label>
+      <input type="text" id="type" class="form-control" ng-model="race.type" />
+    </div>    
   </div>
   <div class="modal-footer">
       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
