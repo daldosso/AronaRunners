@@ -154,45 +154,60 @@ app.controller('Lookups', function ($scope, $http, $dialog) {
 
 app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
   
-  $http.get('http://www.podisticaarona.it/mobile/svr/footraces-list.php').success(function(data) {
-    $scope.races = data;
-  });
+  var reload = function() {
 
-    $scope.race = {
-        when: '',
-        where: '',
-        length: '',
-        length2: '',
-        length3: '',
-        organizer: '',
-        web: '',
-        type: ''
-    };
+    $http.get('http://www.podisticaarona.it/mobile/svr/footraces-list.php').success(function(data) {
+      $scope.races = data;
+    });
 
-    $scope.open = function () {
+  };
 
-       $modal.open({
-            templateUrl: 'race.html',
-            backdrop: true,
-            windowClass: 'modal',
-            controller: function ($scope, $modalInstance, $log, race) {
-                $scope.race = race;
-                $scope.submit = function () {
-                    $log.log('Submiting user info.');
-                    $log.log(race);
-                    $modalInstance.dismiss('cancel');
-                }
-                $scope.cancel = function () {
-                    $modalInstance.dismiss('cancel');
-                };
-            },
-            resolve: {
-                race: function () {
-                    return $scope.race;
-                }
-            }
-        });
-     };
+  reload();
+
+  $scope.race = {
+      when: '',
+      where: '',
+      length: '',
+      length2: '',
+      length3: '',
+      organizer: '',
+      web: '',
+      type: ''
+  };
+
+  $scope.open = function () {
+
+     $modal.open({
+          templateUrl: 'race.html',
+          backdrop: true,
+          windowClass: 'modal',
+          controller: function ($scope, $modalInstance, $log, $http, race) {
+              $scope.race = race;
+              
+              $scope.submit = function () {
+                  var params = {};
+                  params.op = "C";
+                  params.race = race;
+                  $modalInstance.dismiss('cancel');
+                  $http.post("http://www.podisticaarona.it/mobile/svr/footraces-crud.php", params)
+                    .success(function() {})
+                    .error(function() {})
+                    .then(function() {
+                      reload();
+                  });
+              };
+
+              $scope.cancel = function () {
+                  $modalInstance.dismiss('cancel');
+              };
+          },
+          resolve: {
+              race: function () {
+                  return $scope.race;
+              }
+          }
+      });
+   };
 
 });
 
