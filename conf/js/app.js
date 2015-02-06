@@ -1,6 +1,6 @@
-var app = angular.module('app', ['ui.bootstrap']); 
+var app = angular.module('app', ['ui.bootstrap', 'ngQuickDate']);
 
-var url = 'api/configurazioni.php'; 
+var url = 'api/configurazioni.php';
 
 app.factory('configurationFactory', function ($http) { 
     return { 
@@ -152,11 +152,36 @@ app.controller('Lookups', function ($scope, $http, $dialog) {
   };
 });
 
-app.controller('FootRacesCtrl', function($scope, $http) {
+app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
   
   $http.get('http://www.podisticaarona.it/mobile/svr/footraces-list.php').success(function(data) {
     $scope.races = data;
   });
+
+    $scope.open = function () {
+
+       $modal.open({
+            templateUrl: 'race.html',
+            backdrop: true,
+            windowClass: 'modal',
+            controller: function ($scope, $modalInstance, $log, user) {
+                $scope.user = user;
+                $scope.submit = function () {
+                    $log.log('Submiting user info.');
+                    $log.log(user);
+                    $modalInstance.dismiss('cancel');
+                }
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                user: function () {
+                    return $scope.user;
+                }
+            }
+        });
+     };
 
 });
 
@@ -226,6 +251,10 @@ function DialogController($scope, $http, dialog, message, num){
   $scope.no = function(){
     dialog.close({response: 'no'});
   };
-  
 }
+
+app.controller("DemoCtrl", function($scope) {
+  $scope.myDate = null
+  $scope.setToToday = function() { $scope.myDate = new Date(); }
+});
 
