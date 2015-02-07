@@ -7,7 +7,7 @@
 <div class="modal-header">
     <h3>Gara!</h3>
 </div>
-<form ng-submit="submit()" role="form">
+<form role="form">
   <div class="modal-body">
     <div class="form-group">
       <label for="when">Data e ora</label><br/>
@@ -43,8 +43,8 @@
     </div>    
   </div>
   <div class="modal-footer">
-      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-      <input type="submit" class="btn primary-btn" value="Submit" />
+      <button class="btn btn-warning" ng-click="cancel()">Annulla</button>
+      <button class="btn primary-btn" ng-click="submit()">Salva</button>
   </div>
 </form>
 

@@ -56,8 +56,8 @@
                 <td>{{race.organizer}}</td>
                 <td>{{race.web}}</td>
                 <td>{{race.type}}</td>
-                <td class="btn btn-default glyphicon glyphicon-edit"></td>
-                <td class="btn btn-default glyphicon glyphicon-trash"></td>
+                <td class="btn btn-default glyphicon glyphicon-edit" ng-click="open(race)"></td>
+                <td class="btn btn-default glyphicon glyphicon-trash" ng-click="delete(race.id)"></td>
               </tr>
             </tbody>
           </table>

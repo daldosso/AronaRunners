@@ -9,6 +9,7 @@
     $op = $obj->{'op'};
     $race = $obj->{'race'};
     $race_name = '';
+    $id = $mysqli->real_escape_string($race->{'id'});
     $when = $mysqli->real_escape_string($race->{'when'});
     $where = $mysqli->real_escape_string($race->{'where'});
     $length = $mysqli->real_escape_string($race->{'length'});
@@ -30,7 +31,10 @@
                                                    race_length2, race_length3, race_organizer, race_website, race_type)
                       VALUES ('$race_name', '$when', '$where', '$length', '$length2', '$length3', '$organizer', '$web', '$type')";
         }
+    } elseif ($op == "D") {
+            $query = "DELETE FROM mobile_footraces WHERE id = $id";
+
     }
+    $mysqli->query($query);
     echo json_encode($result);
-    $mysqli->query($query);  
 ?>
