@@ -11,6 +11,7 @@
            DATE_FORMAT(race_when, '%d/%m/%Y') as race_day,
            DATE_FORMAT(race_when, '%H:%i') as race_hour
       FROM mobile_footraces
+     WHERE race_when between CURDATE() and (CURDATE() + INTERVAL 1 MONTH)      
      ORDER BY race_when
     ";
     $result = mysql_query($sql) or die(mysql_error());
