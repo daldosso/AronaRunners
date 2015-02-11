@@ -1,6 +1,8 @@
 <?php
 
     require_once "config.php";
+
+    $conf = $_GET['conf'] == 'yes';
     
     $conn = mysql_connect($_CONFIG['host'], $_CONFIG['user'], $_CONFIG['pass']) or die('Impossibile stabilire una connessione: ' . mysql_error());
     mysql_select_db($_CONFIG['dbname_mobile']);
@@ -10,9 +12,9 @@
            DATE_FORMAT(race_when, '%d/%m/%Y %H:%i') as race_date,
            DATE_FORMAT(race_when, '%d/%m/%Y') as race_day,
            DATE_FORMAT(race_when, '%H:%i') as race_hour
-      FROM mobile_footraces
-     WHERE race_when between CURDATE() and (CURDATE() + INTERVAL 1 MONTH)      
-     ORDER BY race_when
+      FROM mobile_footraces " .
+     (!$conf ? "WHERE race_when between CURDATE() and (CURDATE() + INTERVAL 1 MONTH)" : "") .
+    " ORDER BY race_when
     ";
     $result = mysql_query($sql) or die(mysql_error());
 

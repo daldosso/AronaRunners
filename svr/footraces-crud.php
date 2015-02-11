@@ -31,6 +31,18 @@
                                                    race_length2, race_length3, race_organizer, race_website, race_type)
                       VALUES ('$race_name', '$when', '$where', '$length', '$length2', '$length3', '$organizer', '$web', '$type')";
         }
+    } elseif ($op == "U") {
+            $query = "UPDATE mobile_footraces
+                         SET race_name = '$race_name',  
+                             race_when = '$when', 
+                             race_where = '$where', 
+                             race_length = '$length', 
+                             race_length2 = '$length2', 
+                             race_length3 = '$length3', 
+                             race_organizer = '$organizer',
+                             race_website = '$web', 
+                             race_type = '$type'
+                       WHERE id = $id";
     } elseif ($op == "D") {
             $query = "DELETE FROM mobile_footraces WHERE id = $id";
 

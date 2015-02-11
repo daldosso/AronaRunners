@@ -3,7 +3,7 @@ var app = angular.module('app', ['ui.bootstrap', 'ngQuickDate']);
 app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
 
   var reload = function() {
-    $http.get('http://www.podisticaarona.it/mobile/svr/footraces-list.php').success(function(data) {
+    $http.get('http://www.podisticaarona.it/mobile/svr/footraces-list.php?conf=yes').success(function(data) {
       $scope.races = data;
     });
   };
@@ -29,6 +29,7 @@ app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
   };
 
   $scope.race = {
+      id: '',
       when: '',
       where: '',
       length: '',
@@ -39,19 +40,34 @@ app.controller('FootRacesCtrl', function($scope, $http, $modal, $log) {
       type: ''
   };
 
+  var stringToDate = function(str) {
+    var day = str.substr(0, 2);
+    var month = str.substr(3, 2);
+    var year = str.substr(6, 4);
+    var hour = str.substr(11, 2);
+    var minutes = str.substr(14, 2);
+    return new Date(year, month, day, hour, minutes);
+  }
+
   $scope.open = function(race) {
 
       $modal.open({
           templateUrl: 'race.html',
           backdrop: true,
           windowClass: 'modal',
-          controller: function ($scope, $modalInstance, $log, $http, race) {
-              $scope.race = race;
+          controller: function ($scope, $modalInstance, $log, $http) {
+              $scope.race = race;  
               $scope.submit = function () {
                   var params = {};
-                  params.op = "C";
                   params.race = race;
-                  params.race.when = new Date(params.race.when.valueOf() - params.race.when.getTimezoneOffset() * 60000);                  
+                  if (!params.race.id) {
+                    params.op = "C";
+                    params.race.when = new Date(params.race.when.valueOf() - params.race.when.getTimezoneOffset() * 60000);
+                  } else {
+                    //params.race.when = stringToDate(params.race.when);
+                    params.race.when.setHours(params.race.when.getHours() + 1);
+                    params.op = "U";
+                  }                  
                   $modalInstance.dismiss('cancel');
                   $http.post("http://www.podisticaarona.it/mobile/svr/footraces-crud.php", params)
                     .success(function(response) {
