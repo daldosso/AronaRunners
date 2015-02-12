@@ -38,7 +38,9 @@ Ext.application({
         'Athlete',
         'Athletes',
         'FootRaces',
-        'FootRace'
+        'FootRace',
+        'Charts',
+        'ChartRace'
     ],
 
     icon: {

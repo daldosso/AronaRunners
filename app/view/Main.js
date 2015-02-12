@@ -24,7 +24,10 @@ Ext.define('AronaRunners.view.Main', {
                 xclass: 'AronaRunners.view.Athletes'
             }, {
                 xclass: 'AronaRunners.view.FootRaces'
+            }, {
+                xclass: 'AronaRunners.view.Charts'
             }
+
         ]
     }
 });

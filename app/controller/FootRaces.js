@@ -22,11 +22,18 @@ Ext.define('AronaRunners.controller.FootRaces', {
             },
             confirm: {
                 tap: function() {
+                    var container = this.getFootRacesList().up('footRacesList');
                     var form = this.getConfirm().up('formpanel');
                     form.submit({
                         success: function() {
-                            Ext.Msg.alert('', 'Grande!!! ci vediamo alla gara');
                             Ext.data.StoreManager.lookup('FootRaces').load();
+                            Ext.Msg.confirm("", "Grande!!! ci vediamo alla gara.<br/>Vuoi inserire il tuo nome per entrare in classifica?", function (button) {
+                                if (button == 'yes') {
+                                    var chartRace = Ext.widget('chartRace');
+                                    chartRace.setTitle('Gara a ...');
+                                    container.push(chartRace);
+                                }
+                            });
                         },
                         failure: function(f, r) {
                             Ext.Msg.alert('Errore', r.message);
@@ -36,12 +43,12 @@ Ext.define('AronaRunners.controller.FootRaces', {
             },
             decline: {
                 tap: function() {
-                    Ext.Msg.alert('', 'Ok, sarà per la prossima');    
+                    Ext.Msg.alert('', 'Ok, sar&agrave; per la prossima');
                 }
             },
             maybe: {
                 tap: function() {
-                    Ext.Msg.alert('', 'Ok, magari ci vediamo');    
+                    Ext.Msg.alert('', 'Ok, magari ci vediamo');
                 }
             }
         }
