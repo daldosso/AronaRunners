@@ -14,7 +14,8 @@ Ext.define('AronaRunners.controller.FootRaces', {
             footRacesList: '#footRacesList',
             confirm: 'button[action=confirm]',
             decline: 'button[action=decline]',
-            maybe: 'button[action=maybe]'
+            maybe: 'button[action=maybe]',
+            save: 'button[action=save]'
         },
         control: {
             footRacesList: {
@@ -49,6 +50,18 @@ Ext.define('AronaRunners.controller.FootRaces', {
             maybe: {
                 tap: function() {
                     Ext.Msg.alert('', 'Ok, magari ci vediamo');
+                }
+            },
+            save: {
+                tap: function() {
+                    var form = Ext.getCmp("chartRace");
+                    form.submit({
+                        success: function() {
+                        },
+                        failure: function(f, r) {
+                            Ext.Msg.alert('Errore', r.message);
+                        }
+                    });
                 }
             }
         }

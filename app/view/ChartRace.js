@@ -5,23 +5,23 @@ Ext.define('AronaRunners.view.ChartRace', {
         'Ext.field.Hidden'
     ],
     config: {
+        id: 'chartRace',
         title: 'Gara',
         url: 'http://www.podisticaarona.it/mobile/svr/footrace-add.php',
         layout: {
-            type: 'hbox'
+            type: 'vbox'
         },
-        defaults: {
-            margin: 50
-        },
+        defaults: {},
         items: [{
-            xtype: 'hiddenfield',
-            name: 'id'
-        }, {
             xtype: 'label',
-            html: 'Il tuo nome'
+            html: 'Il tuo nome',
+            margin: '50 50 10 50'
         }, {
             xtype: 'autocompletefield',
+            name: 'athleteId',
             value: '',
+            margin: '0 50 10 50',
+            width: 200,
             config: {
                 proxy: {
                     type: 'ajax',
@@ -34,6 +34,12 @@ Ext.define('AronaRunners.view.ChartRace', {
                 needleKey: 'id',
                 labelKey: 'name'
             }
+        }, {
+            xtype: 'button',
+            text: 'Conferma',
+            margin: 50,
+            ui: 'confirm',
+            action: 'save'
         }]
     }
 });
