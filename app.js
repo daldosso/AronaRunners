@@ -19,13 +19,15 @@ Ext.application({
 
     models: [
         'Athletes',
-        'FootRaces'
+        'FootRaces',
+        'ChartRaces'
     ],
 
     stores: [
         'Athletes',
         'Athlete',
-        'FootRaces'
+        'FootRaces',
+        'ChartRaces'
     ],
 
     controllers: [

@@ -7,12 +7,16 @@ Ext.define('AronaRunners.view.ChartRace', {
     config: {
         id: 'chartRace',
         title: 'Gara',
-        url: 'http://www.podisticaarona.it/mobile/svr/footrace-add.php',
+        url: 'http://www.podisticaarona.it/mobile/svr/chartrace-add.php',
         layout: {
             type: 'vbox'
         },
         defaults: {},
         items: [{
+            xtype: 'hiddenfield',
+            id: 'raceId',
+            name: 'raceId'
+        }, {
             xtype: 'label',
             html: 'Il tuo nome',
             margin: '50 50 10 50'

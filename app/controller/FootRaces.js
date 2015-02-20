@@ -31,7 +31,8 @@ Ext.define('AronaRunners.controller.FootRaces', {
                             Ext.Msg.confirm("", "Grande!!! ci vediamo alla gara.<br/>Vuoi inserire il tuo nome per entrare in classifica?", function (button) {
                                 if (button == 'yes') {
                                     var chartRace = Ext.widget('chartRace');
-                                    chartRace.setTitle('Gara a ...');
+                                    Ext.getCmp('raceId').setValue(form.raceId);
+                                    chartRace.setTitle('Gara a ' + form.where);
                                     container.push(chartRace);
                                 }
                             });
@@ -70,6 +71,8 @@ Ext.define('AronaRunners.controller.FootRaces', {
         var container = this.getFootRacesList().up('footRacesList');
         var id = r.get('id');
         var raceView = Ext.widget('footRace');
+        raceView.raceId = id;
+        raceView.where = r.get('where');
         raceView.setTitle('Gara a ' + r.get('where'));
         raceView.setRecord(r);
         container.push(raceView);
