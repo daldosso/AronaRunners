@@ -1,11 +1,9 @@
 <?php
 
     require_once "config.php";
-
-    $conf = $_GET['conf'] == 'yes';
-
-    $conn = mysql_connect($_CONFIG['host'], $_CONFIG['user'], $_CONFIG['pass']) or die('Impossibile stabilire una connessione: ' . mysql_error());
-    mysql_select_db($_CONFIG['dbname_mobile']);
+    require_once "utils.php";
+    $mysqli = new mysqli($_CONFIG['host'], $_CONFIG['user'], $_CONFIG['pass'], $_CONFIG['dbname_mobile']);
+    $mysqli_athlets = new mysqli($_CONFIG['host'], $_CONFIG['user'], $_CONFIG['pass'], $_CONFIG['dbname']);
 
     $sql = "
     SELECT athleteId as athlete,
@@ -13,22 +11,32 @@
            count(distinct raceId) as races
       FROM mobile_charts
      INNER JOIN mobile_footraces ON (mobile_charts.raceId = mobile_footraces.id)
-    -- INNER Sql518868_1.ip_iscritti_podistica ON (mobile_chars.athleteId = Sql518868_1.ip_iscritti_podistica.ip_id)
      GROUP BY athleteId
     ";
 
-    $result = mysql_query($sql) or die(mysql_error());
+    $sql_athlets_template = "select CONCAT(ip_cognome, ' ', ip_nome) as athleteName from ip_iscritti_podistica where ip_id = ";
 
-    $data = array();
-    while ($row = mysql_fetch_assoc($result)) {
-        $data[] = array(
-          'athlete' => $row['athlete'],
-          'km' => $row['km'],
-          'races' => $row['races']
-        );
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->execute();
+        $stmt->bind_result($athlete, $km, $races);
+        $data = array();
+        while ($stmt->fetch()) {
+            $sql_athlets = $sql_athlets_template . $athlete;
+            if ($stmt_athlets = $mysqli_athlets->prepare($sql_athlets)) {
+                $stmt_athlets->execute();
+                $stmt_athlets->bind_result($athleteName);
+                $stmt_athlets->fetch();
+                $data[] = array(
+                  'athlete' => $athleteName,
+                  'km' => $km,
+                  'races' => $races
+                );
+                $stmt_athlets->close();
+            }
+        }
+        $stmt->close();
     }
-
     echo json_encode($data);
-    mysql_close($conn);
 
+    $mysqli->close($conn);
 ?>

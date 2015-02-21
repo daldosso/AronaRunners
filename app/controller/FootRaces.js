@@ -58,6 +58,7 @@ Ext.define('AronaRunners.controller.FootRaces', {
                     var form = Ext.getCmp("chartRace");
                     form.submit({
                         success: function() {
+                            Ext.Msg.alert('', 'Registrato');
                         },
                         failure: function(f, r) {
                             Ext.Msg.alert('Errore', r.message);
