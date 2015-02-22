@@ -12,6 +12,7 @@
       FROM mobile_charts
      INNER JOIN mobile_footraces ON (mobile_charts.raceId = mobile_footraces.id)
      GROUP BY athleteId
+     ORDER BY count(distinct raceId) DESC
     ";
 
     $sql_athlets_template = "select CONCAT(ip_cognome, ' ', ip_nome) as athleteName from ip_iscritti_podistica where ip_id = ";

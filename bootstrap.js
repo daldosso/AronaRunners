@@ -10,8 +10,10 @@
  */
 Ext.Loader.addClassPathMappings({
   "AronaRunners": "app",
+  "AutocompleteResult": "app.js",
   "Ext": "touch/src",
   "Ext-more": "touch/src/core/Ext-more.js",
+  "Ext.AutocompleteField": "app.js",
   "Ext.Boot": ".sencha/app/Boot.js",
   "Ext.DomHelper": "touch/src/dom/Helper.js",
   "Ext.DomQuery": "touch/src/dom/Query.js",
@@ -39,15 +41,20 @@ Ext.ClassManager.addNameAlternateMappings({
   "AronaRunners.controller.Athletes": [],
   "AronaRunners.controller.FootRaces": [],
   "AronaRunners.model.Athletes": [],
+  "AronaRunners.model.ChartRaces": [],
   "AronaRunners.model.FootRaces": [],
   "AronaRunners.store.Athlete": [],
   "AronaRunners.store.Athletes": [],
+  "AronaRunners.store.ChartRaces": [],
   "AronaRunners.store.FootRaces": [],
   "AronaRunners.view.Athlete": [],
   "AronaRunners.view.Athletes": [],
+  "AronaRunners.view.ChartRace": [],
+  "AronaRunners.view.Charts": [],
   "AronaRunners.view.FootRace": [],
   "AronaRunners.view.FootRaces": [],
   "AronaRunners.view.Main": [],
+  "AutocompleteResult": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -56,6 +63,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.Anim": [],
   "Ext.AnimationQueue": [],
   "Ext.Audio": [],
+  "Ext.AutocompleteField": [],
   "Ext.BingMap": [],
   "Ext.Button": [],
   "Ext.Component": [
@@ -544,17 +552,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -685,12 +682,16 @@ Ext.ClassManager.addNameAliasMappings({
   "AronaRunners.controller.Athletes": [],
   "AronaRunners.controller.FootRaces": [],
   "AronaRunners.model.Athletes": [],
+  "AronaRunners.model.ChartRaces": [],
   "AronaRunners.model.FootRaces": [],
   "AronaRunners.store.Athlete": [
     "store.Athlete"
   ],
   "AronaRunners.store.Athletes": [
     "store.Athletes"
+  ],
+  "AronaRunners.store.ChartRaces": [
+    "store.ChartRaces"
   ],
   "AronaRunners.store.FootRaces": [
     "store.FootRaces"
@@ -701,6 +702,12 @@ Ext.ClassManager.addNameAliasMappings({
   "AronaRunners.view.Athletes": [
     "widget.athletesList"
   ],
+  "AronaRunners.view.ChartRace": [
+    "widget.chartRace"
+  ],
+  "AronaRunners.view.Charts": [
+    "widget.chartList"
+  ],
   "AronaRunners.view.FootRace": [
     "widget.footRace"
   ],
@@ -710,6 +717,7 @@ Ext.ClassManager.addNameAliasMappings({
   "AronaRunners.view.Main": [
     "widget.main"
   ],
+  "AutocompleteResult": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -721,6 +729,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.AnimationQueue": [],
   "Ext.Audio": [
     "widget.audio"
+  ],
+  "Ext.AutocompleteField": [
+    "widget.autocompletefield"
   ],
   "Ext.BingMap": [
     "widget.bingmap"
@@ -1287,17 +1298,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
